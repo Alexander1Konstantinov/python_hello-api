@@ -48,7 +48,7 @@ You should get a response like this:
 
 ```json
 {
-  "message": "Hello world from Python with love"
+  "message": "Hello world"
 }
 ```
 
