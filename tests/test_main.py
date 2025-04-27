@@ -8,7 +8,7 @@ def test_read_hello():
     """Тест для маршрута /hello"""
     response = client.get("/hello")
     assert response.status_code == 200
-    assert response.json() == {"message": "Hello world from Python with love"}
+    assert response.json() == {"message": "Hello World"}
 
 def test_favicon():
     """Тест для маршрута /favicon.ico"""

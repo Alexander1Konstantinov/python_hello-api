@@ -9,7 +9,7 @@ def favicon():
 
 class MessageService:
     def get_hello_message(self):
-        return {"message": "Hello world from Python with love"}
+        return {"message": "Hello World"}
 
 message_service = MessageService()
 
