@@ -29,6 +29,14 @@ jobs:
       
     steps:
     - uses: actions/checkout@v4
+    
+    # Добавляем шаг для преобразования имени в нижний регистр
+    - name: Set lowercase username
+      id: lowercase
+      run: |
+        username_lower=$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')
+        echo "USERNAME_LOWER=$username_lower" >> $GITHUB_ENV
+
     - name: Log in to GHCR
       uses: docker/login-action@v2
       with:
@@ -42,5 +50,5 @@ jobs:
         context: .
         push: true
         tags: |
-          ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
-          ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          ${{ env.REGISTRY }}/${{ env.USERNAME_LOWER }}/${{ env.IMAGE_NAME }}:latest
+          ${{ env.REGISTRY }}/${{ env.USERNAME_LOWER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
